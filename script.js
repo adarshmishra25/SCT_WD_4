@@ -43,7 +43,6 @@ addBtn.addEventListener("click", () => {
 });
 
 function renderItems() {
-
   taskList.innerHTML = "";
 
   itemArray.forEach((item, index) => {
@@ -51,25 +50,62 @@ function renderItems() {
     li.classList.toggle("completed", item.completed);
 
     li.innerHTML = `
-      <div>
+      <div class="task-left">
         <input type="checkbox" class="check" ${item.completed ? "checked" : ""}>
         <span>${item.text}</span>
+        <input type="text" class="edit-input" value="${item.text}" readonly>
       </div>
-      <img src="photos/cross.svg" alt="delete">
+
+      <div class="actions">
+        <img class="edit-btn" src="photos/edit.svg" alt="edit">
+        <img class="delete-btn" src="photos/cross.svg" alt="delete">
+      </div>
     `;
 
     const checkbox = li.querySelector(".check");
+    const editBtn = li.querySelector(".edit-btn");
+    const deleteBtn = li.querySelector(".delete-btn");
+    const editInput = li.querySelector(".edit-input");
 
+    /* ===== CHECKBOX ===== */
     checkbox.addEventListener("change", () => {
       itemArray[index].completed = checkbox.checked;
       saveItems();
       renderItems();
     });
 
-    li.querySelector("img").addEventListener("click", () => {
+    /* ===== DELETE ===== */
+    deleteBtn.addEventListener("click", () => {
       itemArray.splice(index, 1);
       saveItems();
       renderItems();
+    });
+
+    /* ===== EDIT (ONLY TRIGGER) ===== */
+    editBtn.addEventListener("click", () => {
+      const isEditing = li.classList.contains("editing");
+
+      if (!isEditing) {
+        li.classList.add("editing");
+        editInput.removeAttribute("readonly");
+        editInput.focus();
+      } else {
+        const newText = editInput.value.trim();
+        if (newText !== "") {
+          itemArray[index].text = newText;
+          saveItems();
+        }
+        li.classList.remove("editing");
+        editInput.setAttribute("readonly", true);
+        renderItems();
+      }
+    });
+
+    /* ===== ENTER SAVES, NOTHING ELSE ===== */
+    editInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        editBtn.click();
+      }
     });
 
     taskList.appendChild(li);
@@ -78,6 +114,7 @@ function renderItems() {
   checkTask();
   bar();
 }
+
 
 
 function saveItems() {

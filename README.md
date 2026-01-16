@@ -1,46 +1,51 @@
-# SCT_WD_4
-
 # 📝 To-Do List Web App
 
-A clean, modern, and interactive **To-Do List web application** built using **HTML, CSS, and Vanilla JavaScript**.  
-This project focuses on **core frontend fundamentals**, proper **state management**, and **clean UI/UX design**.
+A clean, modern **To-Do List web application** built using **HTML, CSS, and JavaScript**.  
+It helps users manage daily tasks efficiently with a simple UI, progress tracking, and local storage support.
 
 ---
 
 ## 🚀 Features
 
-- ➕ Add new tasks  
-- ✅ Mark tasks as completed  
-- ❌ Delete tasks  
-- 💾 Persistent storage using **localStorage**  
-- 📊 Animated progress bar showing task completion  
-- ⏰ Live date & time display with AM/PM format  
-- ⌨️ Keyboard support (Press **Enter** to add a task)  
-- 🎨 Glassmorphism-inspired modern UI  
-- 📱 Responsive and scroll-friendly layout  
-- 🖼️ Empty state illustration when no tasks are available  
+### ✅ Task Management
+- Add new tasks
+- Mark tasks as completed
+- Delete tasks
+- **Edit existing tasks using an inline edit button**
+
+### ✏️ Edit Task
+- Edit mode opens **only when the edit icon is clicked**
+- Task text is replaced by an input field (no duplicate text)
+- Press **Enter** or click the edit icon again to save
+- Changes are instantly stored in `localStorage`
+
+### 📊 Progress Tracker
+- Displays completed vs total tasks
+- Dynamic progress bar updates in real time
+- Special highlight when all tasks are completed
+
+### 🕒 Date & Time
+- Live clock (12-hour format)
+- Current date display
+
+### 💾 Persistent Storage
+- Tasks are saved in the browser using `localStorage`
+- Data remains intact after page refresh
+
+### 🎨 UI & UX
+- Glassmorphism-inspired design
+- Smooth hover and transition effects
+- Scrollable task list with custom scrollbar
+- Empty state illustration when no tasks exist
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Built With
 
-- **HTML5** – Structure  
-- **CSS3** – Styling, animations, glassmorphism  
-- **JavaScript (ES6)** – Logic, DOM manipulation, state handling  
-- **Browser localStorage** – Data persistence  
-
-No frameworks. No libraries. Pure fundamentals.
-
----
-
-## 🧠 What This Project Demonstrates
-
-- Separation of **application state** and **UI rendering**
-- Proper use of `localStorage` for persistent data
-- Event-driven JavaScript programming
-- Correct handling of date & time formatting
-- UX improvements through spacing, hierarchy, and subtle animations
-- Writing clean, maintainable frontend code without frameworks
+- **HTML5** – Structure
+- **CSS3** – Styling & layout
+- **JavaScript (Vanilla)** – Logic & interactivity
+- **LocalStorage API** – Data persistence
 
 ---
 
